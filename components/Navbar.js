@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { Transition } from '@headlessui/react'
@@ -5,10 +6,20 @@ import { Link } from 'react-scroll'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { ImSun } from 'react-icons/im'
 import { FaRegMoon } from 'react-icons/fa'
+=======
+import React, { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { Transition } from '@headlessui/react';
+import { Link } from 'react-scroll';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { ImSun } from 'react-icons/im';
+import { FaRegMoon } from 'react-icons/fa';
+>>>>>>> ee69583 (Initial commit)
 
 import { forwardRef } from 'react';
 
 const LinkWithRef = forwardRef((props, ref) => {
+<<<<<<< HEAD
     return <Link {...props} innerRef={ref} />;
 });
 
@@ -29,6 +40,32 @@ const Navbar = () => {
   }
 
   if (!mounted) return null // Avoid rendering during SSR
+=======
+  return <Link {...props} innerRef={ref} />;
+});
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false); // For handling SSR mismatch
+
+  // Theme
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true); // Mark that the component has mounted
+
+    // Set default theme to 'dark'
+    if (theme === undefined) {
+      setTheme('dark');
+    }
+  }, [theme, setTheme]);
+
+  const handleThemeChange = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  if (!mounted) return null; // Avoid rendering during SSR
+>>>>>>> ee69583 (Initial commit)
 
   return (
     <div>
@@ -38,10 +75,15 @@ const Navbar = () => {
             <div className="flex items-center justify-between w-full sm:mx-10 md:mx20">
               {/* Brand Logo Section */}
               <div className="flex items-center justify-center flex-shrink-0 sm:ml-4">
+<<<<<<< HEAD
                 {/* <h1 className='text-xl font-bold ml-8'>Chetan <span className="text-blue-600 dark:text-cyan-500">Bochare</span></h1> */}
 
                 <h1 className='text-xl font-bold ml-8 animate-glow'>
                  Chetan <span className="text-blue-600 dark:text-cyan-500">Bochare</span>
+=======
+                <h1 className='text-xl font-bold ml-8 animate-glow'>
+                  Chetan <span className="text-blue-600 dark:text-cyan-500">Bochare</span>
+>>>>>>> ee69583 (Initial commit)
                 </h1>
               </div>
 
@@ -76,6 +118,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <Transition show={isOpen} enter="transition ease-out duration-100 transform" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="transition ease-in duration-75 transform" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
+<<<<<<< HEAD
   <div className="md:hidden" id="mobile-menu">
     <div className="dark:text-white mx-4 pt-4 pb-4 space-y-1">
       <Link to="about" smooth={true} offset={50} duration={500} className="cursor-pointer hover:bg-blue-600 text-black dark:text-gray-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</Link>
@@ -86,13 +129,34 @@ const Navbar = () => {
   </div>
 </Transition>
 
+=======
+        <div className="md:hidden" id="mobile-menu">
+          <div className="dark:text-white mx-4 pt-4 pb-4 space-y-1">
+            <Link to="about" smooth={true} offset={50} duration={500} className="cursor-pointer hover:bg-blue-600 text-black dark:text-gray-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</Link>
+            <Link to="skills" smooth={true} offset={50} duration={500} className="cursor-pointer hover:bg-blue-600 text-black dark:text-gray-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</Link>
+            <Link to="works" smooth={true} offset={50} duration={500} className="cursor-pointer hover:bg-blue-600 text-black dark:text-gray-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</Link>
+            <Link to="contact" smooth={true} offset={50} duration={500} className="cursor-pointer hover:bg-blue-600 text-black dark:text-gray-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</Link>
+          </div>
+        </div>
+      </Transition>
+>>>>>>> ee69583 (Initial commit)
 
       {/* Mobile Theme Toggle */}
       <div onClick={handleThemeChange} className="z-50 block md:hidden select-none cursor-pointer fixed bottom-2 p-2 rounded-tr-full rounded-br-full dark:bg-yellow-200 bg-green-200">
         {theme === 'dark' ? <ImSun className='font-semibold text-2xl mr-1 text-black' /> : <FaRegMoon className='font-semibold text-2xl mr-1' />}
       </div>
     </div>
+<<<<<<< HEAD
   )
 }
 
 export default Navbar
+=======
+  );
+};
+
+// Add display name for the Navbar component
+Navbar.displayName = 'Navbar';
+
+export default Navbar;
+>>>>>>> ee69583 (Initial commit)
