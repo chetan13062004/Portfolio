@@ -148,7 +148,7 @@ const Navbar = () => {
 
 
         return () => {
-            setTheme('dark');
+            setTheme('light');
         }
     }, [])
 
